@@ -6,14 +6,15 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    config: {},
-    mods: [],
+    mods: [
+      'screepsmod-mongo',
+      'screepsmod-auth',
+      'screepsmod-admin-utils',
+      'screepsmod-map-tool'
+    ],
     stats: {}
   },
   mutations: {
-    SET_CONFIG (state, config) {
-      state.config = config
-    },
     SET_MODS (state, mods) {
       state.mods = mods
     },
@@ -26,13 +27,9 @@ const store = new Vuex.Store({
       const { data } = await axios.get('/stats')
       commit('SET_STATS', data)
     },
-    async getConfig ({ commit }) {
-      const { data } = await axios.get('/api/config')
-      commit('SET_CONFIG', data)
-    },
-    async getAvailableMods ({ commit }) {
-      const { data: { objects } } = await axios.get('http://registry.npmjs.org/-/v1/search?text=screepsmod')
-      commit('SET_MODS', objects.map(o => o.package))
+    async fetchMods ({ commit }) {
+      const { data } = await axios.get('/api/mods')
+      commit('SET_MODS', data)
     }
   },
   modules: {
@@ -40,6 +37,8 @@ const store = new Vuex.Store({
 })
 
 export default store
+
+store.dispatch('fetchMods')
 
 setInterval(() => store.dispatch('fetchStats'), 5000)
 setTimeout(() => store.dispatch('fetchStats'), 100)

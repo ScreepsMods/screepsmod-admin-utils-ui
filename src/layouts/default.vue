@@ -1,7 +1,6 @@
 <template>
   <v-app app dark>
    <v-navigation-drawer
-      clipped
       app
       v-model="drawer"
     >
@@ -23,8 +22,6 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      clipped-left
-      fixed
       app
     >
       <v-app-bar-nav-icon @click="drawer = !drawer" />
@@ -32,7 +29,7 @@
       <v-spacer />
     </v-app-bar>
     <v-content>
-      <v-container fill-height class="ma-2">
+      <v-container fluid class="fill-height">
         <router-view />
       </v-container>
     </v-content>

@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    info: {},
     mods: [
       'screepsmod-mongo',
       'screepsmod-auth',
@@ -15,6 +16,9 @@ const store = new Vuex.Store({
     stats: {}
   },
   mutations: {
+    SET_INFO (state, info) {
+      state.info = info
+    },
     SET_MODS (state, mods) {
       state.mods = mods
     },
@@ -23,6 +27,10 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    async fetchInfo ({ commit }) {
+      const { data } = await axios.get('/api/version')
+      commit('SET_INFO', data)
+    },
     async fetchStats ({ commit }) {
       const { data } = await axios.get('/stats')
       commit('SET_STATS', data)
@@ -38,6 +46,7 @@ const store = new Vuex.Store({
 
 export default store
 
+store.dispatch('fetchInfo')
 store.dispatch('fetchMods')
 
 setInterval(() => store.dispatch('fetchStats'), 5000)

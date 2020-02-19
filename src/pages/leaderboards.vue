@@ -1,11 +1,8 @@
 <template>
-  <v-layout
-    row
-  >
-    <v-flex md12>
-      <v-tabs
-        v-model="currentTab"
-        >
+  <v-row class="fill-height">
+    <v-col md12>
+      <h1>Leaderboards</h1>
+      <v-tabs v-model="currentTab">
         <v-tabs-slider />
         <v-tab v-for="tab in tabs" :key="tab.field" :href="`#tab-${tab.field}`">
           {{ tab.label }}
@@ -18,8 +15,8 @@
           </v-card>
         </v-tab-item>
       </v-tabs>
-    </v-flex>
-  </v-layout>
+    </v-col>
+  </v-row>
 </template>
 <script>
 import Leaderboard from '@/components/Leaderboard'

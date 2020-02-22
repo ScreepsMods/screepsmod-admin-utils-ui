@@ -16,6 +16,14 @@
               <strong>ms</strong>
             </div>
           </div>
+          <v-spacer />
+          <v-icon size="64">mdi-clock-outline</v-icon>
+          <div>
+            <div class="caption grey--text text-uppercase">Current Tick</div>
+            <div>
+              <span class="display-2 font-weight-black" v-text="stats.gametime"></span>
+            </div>
+          </div>
         </v-card-title>
         <v-card-text>
           <v-sparkline

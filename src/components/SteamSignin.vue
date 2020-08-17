@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="/api/auth/steam" target="_blank" v-if="!signedIn">
+    <a href="/api/auth/steam" rel="opener" target="_blank" v-if="!signedIn">
       <img src="@/assets/sits_01.png">
     </a>
     <div v-if="signedIn">

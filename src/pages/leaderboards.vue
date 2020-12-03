@@ -27,6 +27,8 @@ const roomsProp = R.prop('rooms')
 const powerProp = R.prop('power')
 const gclProp = R.prop('gcl')
 const combinedRclProp = R.prop('combinedRCL')
+const scoreProp = R.prop('score')
+const rankProp = R.prop('rank')
 
 const filterNPCUsers = R.filter(R.compose(R.not, R.includes(R.__, ['2', '3']), R.prop('id')))
 
@@ -39,6 +41,8 @@ const sortByRooms = filterSortProp(roomsProp)
 const sortByPower = filterSortProp(powerProp)
 const sortByGCL = filterSortProp(gclProp)
 const sortByCombinedRcl = filterSortProp(combinedRclProp)
+const sortByScore = filterSortProp(scoreProp)
+const sortByRank = filterSortProp(rankProp)
 
 export default {
   components: {
@@ -51,7 +55,9 @@ export default {
         { label: 'GCL', field: 'gclLevel', fn: sortByGCL },
         { label: 'Power', field: 'powerLevel', fn: sortByPower },
         { label: 'Rooms', field: 'rooms', fn: sortByRooms },
-        { label: 'Comb. RCL', field: 'combinedRCL', fn: sortByCombinedRcl }
+        { label: 'Comb. RCL', field: 'combinedRCL', fn: sortByCombinedRcl },
+        { label: 'Score', field: 'score', fn: sortByScore },
+        { label: 'Rank', field: 'rank', fn: sortByRank },
       ]
     }
   },

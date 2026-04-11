@@ -1,6 +1,9 @@
 {
   "name": "screepsmod-admin-utils-ui",
   "version": "0.4.0",
+  "repository": {
+    "url": "https://github.com/ScreepsMods/screepsmod-admin-utils-ui"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
